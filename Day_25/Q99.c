@@ -1,27 +1,36 @@
 #include <stdio.h>
-
-struct Student
-{
-    int roll;
-    char name[50];
-};
+#include <string.h>
 
 int main()
 {
-    struct Student s[3];
-    int i;
+    char name[5][50], temp[50];
+    int i, j;
 
-    for(i = 0; i < 3; i++)
+    printf("Enter 5 names:\n");
+
+    for(i = 0; i < 5; i++)
     {
-        printf("Enter Roll and Name: ");
-        scanf("%d %s", &s[i].roll, s[i].name);
+        scanf("%s", name[i]);
     }
 
-    printf("\nStudent Records\n");
-
-    for(i = 0; i < 3; i++)
+    for(i = 0; i < 4; i++)
     {
-        printf("%d %s\n", s[i].roll, s[i].name);
+        for(j = i + 1; j < 5; j++)
+        {
+            if(strcmp(name[i], name[j]) > 0)
+            {
+                strcpy(temp, name[i]);
+                strcpy(name[i], name[j]);
+                strcpy(name[j], temp);
+            }
+        }
+    }
+
+    printf("Names in Alphabetical Order:\n");
+
+    for(i = 0; i < 5; i++)
+    {
+        printf("%s\n", name[i]);
     }
 
     return 0;
