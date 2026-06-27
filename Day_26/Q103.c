@@ -2,15 +2,50 @@
 
 int main()
 {
-    FILE *fp;
+    int choice;
+    float balance = 10000, amount;
 
-    fp = fopen("data.txt", "a");
+    printf("===== ATM MENU =====\n");
+    printf("1. Check Balance\n");
+    printf("2. Deposit\n");
+    printf("3. Withdraw\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
 
-    fprintf(fp, "\nThis line is appended.");
+    switch(choice)
+    {
+        case 1:
+            printf("Current Balance = %.2f", balance);
+            break;
 
-    fclose(fp);
+        case 2:
+            printf("Enter Deposit Amount: ");
+            scanf("%f", &amount);
 
-    printf("Data Appended Successfully");
+            balance = balance + amount;
+
+            printf("Updated Balance = %.2f", balance);
+            break;
+
+        case 3:
+            printf("Enter Withdraw Amount: ");
+            scanf("%f", &amount);
+
+            if(amount <= balance)
+            {
+                balance = balance - amount;
+                printf("Updated Balance = %.2f", balance);
+            }
+            else
+            {
+                printf("Insufficient Balance");
+            }
+
+            break;
+
+        default:
+            printf("Invalid Choice");
+    }
 
     return 0;
 }
