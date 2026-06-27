@@ -2,16 +2,30 @@
 
 int main()
 {
-    FILE *fp;
+    int secret = 25;
+    int guess;
 
-    fp = fopen("data.txt", "w");
+    printf("===== Number Guessing Game =====\n");
 
-    fprintf(fp, "Hello World");
-    fprintf(fp, "\nWelcome to File Handling");
+    do
+    {
+        printf("Guess the number (1-50): ");
+        scanf("%d", &guess);
 
-    fclose(fp);
+        if(guess > secret)
+        {
+            printf("Too High!\n");
+        }
+        else if(guess < secret)
+        {
+            printf("Too Low!\n");
+        }
+        else
+        {
+            printf("Congratulations! You guessed the correct number.\n");
+        }
 
-    printf("Data Written Successfully");
+    } while(guess != secret);
 
     return 0;
 }
