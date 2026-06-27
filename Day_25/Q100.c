@@ -1,25 +1,37 @@
 #include <stdio.h>
-
-struct Student
-{
-    int roll;
-    float marks;
-};
-
-void display(struct Student s)
-{
-    printf("Roll = %d\n", s.roll);
-    printf("Marks = %.2f\n", s.marks);
-}
+#include <string.h>
 
 int main()
 {
-    struct Student s;
+    char word[5][50], temp[50];
+    int i, j;
 
-    printf("Enter Roll and Marks: ");
-    scanf("%d %f", &s.roll, &s.marks);
+    printf("Enter 5 words:\n");
 
-    display(s);
+    for(i = 0; i < 5; i++)
+    {
+        scanf("%s", word[i]);
+    }
+
+    for(i = 0; i < 4; i++)
+    {
+        for(j = i + 1; j < 5; j++)
+        {
+            if(strlen(word[i]) > strlen(word[j]))
+            {
+                strcpy(temp, word[i]);
+                strcpy(word[i], word[j]);
+                strcpy(word[j], temp);
+            }
+        }
+    }
+
+    printf("Words Sorted by Length:\n");
+
+    for(i = 0; i < 5; i++)
+    {
+        printf("%s\n", word[i]);
+    }
 
     return 0;
 }
