@@ -2,17 +2,25 @@
 
 int main()
 {
-    FILE *fp;
-    char ch;
+    char name[50];
+    int age;
 
-    fp = fopen("data.txt", "r");
+    printf("Enter Name: ");
+    scanf("%s", name);
 
-    while((ch = fgetc(fp)) != EOF)
+    printf("Enter Age: ");
+    scanf("%d", &age);
+
+    printf("\n----- Voting Eligibility -----\n");
+
+    if(age >= 18)
     {
-        printf("%c", ch);
+        printf("%s is Eligible to Vote.\n", name);
     }
-
-    fclose(fp);
+    else
+    {
+        printf("%s is Not Eligible to Vote.\n", name);
+    }
 
     return 0;
 }
